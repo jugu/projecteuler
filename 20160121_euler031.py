@@ -14,12 +14,13 @@ T = int(raw_input(''))
 caseN = list()
 for i in range(T):
     caseN.append(int(raw_input('')))
-coinvalues = [1,2,5,10,20,50,100,200]
+coinvalues = [2,5,10,20,50,100,200]
 for N in caseN:
-    ways = [1]+[0]*N  
+    ways = [1]+[1]*N  
     for i in range(len(coinvalues)):
         j = coinvalues[i]
         while j <= N:
             ways[j] = ways[j]+ ways[j - coinvalues[i]]      
+            ways[j] = ways[j]%(10**9+7)
             j = j + 1
     print ways[N]
